@@ -1,28 +1,51 @@
-# AngAnimationAdvance
+## How to set up to use animations in Angular4
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+#### 1. update main packages to the latest
 
-## Development server
+```bash
+npm install @angular/{common,compiler,compiler-cli,core,forms,http,platform-browser,platform-browser-dynamic,platform-server,router,animations}@latest typescript@latest --save
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+#### 2. enable web-animations (temporal measure)
 
-## Code scaffolding
+- first, comment out polyfills.ts with web-animation line.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+```bash
+npm install --save web-animations-js
+```
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+#### 3. install animations
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm install --save @angular/animations
+```
 
-## Running end-to-end tests
+#### 4. import animations at app.module.ts
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+```javascript
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-## Further help
+@NgModule({
+  imports: [
+    BrowserAnimationsModule
+  ],
+})
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+#### 4. for css framework(bootstrap)
+
+- first, install bootstrap
+
+```bash
+npm install bootstrap --save
+```
+- and then, load framework in the angular-cli.json
+
+```json
+"styles": [
+      "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+      "styles.css"
+    ],
+```

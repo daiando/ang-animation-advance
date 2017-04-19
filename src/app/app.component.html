@@ -1,3 +1,29 @@
-<h1>
-  {{title}}
-</h1>
+<button
+(click)="isShown = !isShown"
+type="button" class="btn btn-default btn-sm">Toggle element</button>
+
+<br>
+<br>
+<p
+  @showState
+  *ngIf="isShown">You can see me now !</p>
+
+<button (click)="width = width - 50" class="btn btn-default btn-sm">
+shrink
+</button>
+<button (click)="animate = !animate" class="btn btn-default btn-sm">
+animate
+</button>
+<br>
+<br>
+<p [@animateState]="animate ? 'animate' : 'notAnimate'"
+   [ngStyle]="{'width.px': width}">foo</p>
+<hr>
+<button (click)="onAddElement()" class="btn btn-default btn-sm">
+Add Element
+</button>
+
+<div
+  *ngFor="let testResult of testResults"
+  @listState
+  class="test-result">{{ testResult }}</div>
